@@ -54,7 +54,7 @@
                   </p>
                   <button
                     id="btn-upload-image"
-                    class="btn btn-primary d-none"
+                    class="btn btn-primary d-none mb-2 w-100 w-md-auto"
                   >
                     Accept this Image
                   </button>
@@ -62,7 +62,7 @@
                 <div class="col-12 col-lg-6">
                   <img
                     id="image-preview"
-                    class="mt-2 w-100 d-none"
+                    class="mt-2 w-100 img-fluid rounded d-none"
                     alt="user's portrait"
                   />
                 </div>
@@ -138,10 +138,12 @@
                     class="input_video w-100"
                     autoplay
                     muted
+                    playsinline
+                    webkit-playsinline
                   ></video>
                   <canvas
                     id="overlay"
-                    class="output_canvas position-absolute top-0 start-0 w-100 opacity-25"
+                    class="output_canvas position-absolute top-0 start-0 w-100 opacity-25 d-none"
                   ></canvas>
                 </div>
               </div>
@@ -198,5 +200,23 @@
     ></script>
     <script src="./face-api.min.js"></script>
     <script src="script.js"></script>
+    <script>
+      // Hide canvas on page load
+      window.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("overlay").classList.add("d-none");
+      });
+      // Show canvas after permissions are received and video is ready
+      const btnPermissions = document.getElementById("btn-permissions");
+      const video = document.getElementById("video");
+      const overlay = document.getElementById("overlay");
+      const permissions = document.getElementById("permissions");
+      const videoScreen = document.getElementById("video-screen");
+      btnPermissions.addEventListener("click", function () {
+        video.addEventListener("loadeddata", function onLoadedData() {
+          overlay.classList.remove("d-none");
+          video.removeEventListener("loadeddata", onLoadedData);
+        });
+      });
+    </script>
   </body>
 </html>

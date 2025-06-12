@@ -79,6 +79,8 @@
 
   // --- Handle Image Upload to Extract Face Descriptor ---
   imageUpload.addEventListener("change", async (e) => {
+    // Hide canvas when image upload is active
+    overlay.classList.add("d-none"); // Hide canvas during image upload
     const file = e.target.files[0];
     if (file) {
       // Convert file to an image element
@@ -157,6 +159,7 @@
       overlay.width = video.videoWidth;
       overlay.height = video.videoHeight;
       scriptSection.style.display = "block";
+      overlay.classList.remove("d-none"); // Show canvas after permissions
       // Now show lat/long after video is ready
       if (coords && locationDisplay) {
         locationDisplay.innerHTML = `✅ Lat: ${coords.latitude.toFixed(6)} Long: ${coords.longitude.toFixed(6)}`;
@@ -242,6 +245,7 @@
       overlay.width = video.videoWidth;
       overlay.height = video.videoHeight;
       scriptSection.style.display = "block";
+      overlay.classList.remove("d-none"); // Show canvas after permissions
       startFaceApiDetection();
       video.removeEventListener("loadeddata", onLoadedData);
     });
