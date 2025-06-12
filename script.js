@@ -26,9 +26,9 @@
   // --- Load face-api.js models ---
   const loadFaceApiModels = async () => {
     // Assumes models are served from /faces folder.
-    await faceapi.nets.ssdMobilenetv1.loadFromUri("/faces"); // for face detection
-    await faceapi.nets.faceLandmark68Net.loadFromUri("/faces"); // 68-point landmarks
-    await faceapi.nets.faceRecognitionNet.loadFromUri("/faces"); // face descriptor model
+    await faceapi.nets.ssdMobilenetv1.loadFromUri("https://raw.githubusercontent.com/justadudewhohacks/face-api.js-models/refs/heads/master/ssd_mobilenetv1/ssd_mobilenetv1_model-weights_manifest.json"); // for face detection
+    await faceapi.nets.faceLandmark68Net.loadFromUri("https://raw.githubusercontent.com/justadudewhohacks/face-api.js-models/refs/heads/master/face_landmark_68/face_landmark_68_model-weights_manifest.json"); // 68-point landmarks
+    await faceapi.nets.faceRecognitionNet.loadFromUri("https://raw.githubusercontent.com/justadudewhohacks/face-api.js-models/refs/heads/master/face_recognition/face_recognition_model-weights_manifest.json"); // face descriptor model
     console.log("face-api.js models loaded");
   };
   await loadFaceApiModels();
