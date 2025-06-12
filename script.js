@@ -25,10 +25,10 @@
 
   // --- Load face-api.js models ---
   const loadFaceApiModels = async () => {
-    // Assumes models are served from /face-models folder.
-    await faceapi.nets.ssdMobilenetv1.loadFromUri("/face-models"); // for face detection
-    await faceapi.nets.faceLandmark68Net.loadFromUri("/face-models"); // 68-point landmarks
-    await faceapi.nets.faceRecognitionNet.loadFromUri("/face-models"); // face descriptor model
+    // Assumes models are served from /faces folder.
+    await faceapi.nets.ssdMobilenetv1.loadFromUri("/faces"); // for face detection
+    await faceapi.nets.faceLandmark68Net.loadFromUri("/faces"); // 68-point landmarks
+    await faceapi.nets.faceRecognitionNet.loadFromUri("/faces"); // face descriptor model
     console.log("face-api.js models loaded");
   };
   await loadFaceApiModels();
