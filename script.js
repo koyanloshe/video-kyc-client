@@ -40,10 +40,12 @@
     "btn-decrease-brightness"
   );
   const backToUpload = document.getElementById("btn-back-to-upload");
+
   const backFromPermissions = document.getElementById(
     "btn-back-from-permissions"
   );
   const backFromVideo = document.getElementById("btn-back-from-video");
+  const videoSection = document.getElementById("video-section");
 
   // global variables
   let mediaStream = null;
@@ -635,6 +637,8 @@
             uploadedFaceDescriptor = detection.descriptor;
             imagePreview.src = img.src;
             imagePreview.classList.remove("d-none");
+          } else {
+            imageUploadWidget.classList.remove("d-none");
           }
         }
       }
@@ -647,6 +651,7 @@
   // --- Button Event: Request Permissions and Start Video ---
   btnPermissions.addEventListener("click", async () => {
     try {
+      videoSection.classList.remove("d-none");
       // Request location permission
       const coords = await getLocation();
       // Request camera and mic permissions.
@@ -720,6 +725,7 @@
   });
 
   backFromVideo.addEventListener("click", () => {
+    videoSection.classList.add("d-none");
     locationDisplay.innerHTML = "";
     videoFacesStatus.innerHTML = "";
     scriptSection.classList.add("d-none");
