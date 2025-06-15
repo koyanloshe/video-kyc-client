@@ -518,7 +518,7 @@
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault(); // Prevent default form submission
     const formData = new FormData(e.target);
-    const user = formData.get("username");
+    const user = formData.get("username").toLowerCase().trim();
     const pass = formData.get("password");
     try {
       const inputHash = await hashPasswordPBKDF2(pass, PBKDF2_SALT);
@@ -651,7 +651,6 @@
   // --- Button Event: Request Permissions and Start Video ---
   btnPermissions.addEventListener("click", async () => {
     try {
-      videoSection.classList.remove("d-none");
       // Request location permission
       const coords = await getLocation();
       // Request camera and mic permissions.
@@ -665,6 +664,7 @@
         overlay.height = video.videoHeight;
         scriptSection.classList.remove("d-none");
         overlay.classList.remove("d-none"); // Show canvas after permissions
+        videoSection.classList.remove("d-none");
         // Now show lat/long after video is ready
         if (coords && locationDisplay) {
           locationDisplay.innerHTML = `✅ Lat: ${coords.latitude.toFixed(
