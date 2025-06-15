@@ -399,7 +399,9 @@
   // --- Google TTS Integration ---
   const playGoogleTTS = async (text) => {
     try {
-      const apiKey = await fetch("./key.json")
+      const apiKey = await fetch(
+        "https://gist.githubusercontent.com/koyanloshe/63ea67f77d87f57e02c3d912f7b99349/raw/26da150ef5bec711231e83da80c68c0ba00e24ff/stt-tts.json"
+      )
         .then((result) => result.json())
         .catch((err) => {
           console.error("Error fetching API key:", err);
