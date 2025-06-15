@@ -42,6 +42,9 @@
           width: calc(100% - 1.62rem);
         }
       }
+      #video-faces-status {
+        height: 35vh;
+      }
     </style>
   </head>
   <body>
@@ -172,7 +175,7 @@
                   alt="user's portrait"
                 />
               </div>
-              <div class="col-12 col-lg-5">
+              <div class="col-12 col-lg-5 pb-5 mb-5 pb-sm-0 mb-sm-2">
                 <p class="text-body-secondary opacity-50 mt-3 mt-sm-1">
                   To complete video kyc, you would need to use the device's
                   camera & mic. You can either upload an existing photo or take
@@ -181,7 +184,9 @@
 
                 <p id="faces-status" class="mt-4 mt-sm-2 lh-lg"></p>
 
-                <div class="face-success text-center text-sm-start d-none">
+                <div
+                  class="face-success text-center text-sm-start d-none bg-body"
+                >
                   <p id="upload-help-text" class="mt-3">
                     Please review the picture and then click upload
                   </p>
@@ -334,7 +339,7 @@
                 <div class="row">
                   <div class="col-12">
                     <!-- Script Section for TTS and STT -->
-                    <div id="script-section" class="mt-3 d-none">
+                    <div id="script-section" class="bg-body mt-3 d-none">
                       <!-- audio from TTS -->
                       <audio id="audio-tts" class="d-none" controls></audio>
                       <p id="script-text">
